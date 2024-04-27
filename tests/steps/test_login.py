@@ -16,7 +16,6 @@ def title_is(browser):
 
 @then('Heading is')
 def heading_is(browser):
-    title = browser.title
     expect(browser.locator('//div/h1').first).to_contain_text('Playwright')
 
 
