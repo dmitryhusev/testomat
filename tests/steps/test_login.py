@@ -1,25 +1,30 @@
-from pytest_bdd import given, when, then, scenario
+from pytest_bdd import given, when, then, scenario, parsers
+from playwright.sync_api import expect
 
-@scenario('../features/login.feature', 'Valid log in')
-def test_login():
-    pass
 
 @given('Navigate to login page')
 def navigate_to(browser):
-    browser.goto('https://alib.com.ua')
-    assert browser.title == 2
+    browser.goto('https://playwright.dev/python/')
 
 @when('User on page')
 def on_page(browser):
-    browser.goto('https://alib.com.ua')
-    assert 1
+    pass
 
 @then('Page title is')
 def title_is(browser):
+    assert "Playwright" in browser.title()
+
+@then('Heading is')
+def heading_is(browser):
     title = browser.title
-    assert 1
+    expect(browser.locator('//div/h1').first).to_contain_text('Playwright')
 
 
-# def test_1(browser):
-#     browser.goto('https://alib.com.ua')
-#     assert browser.title == '1'
+@scenario('../features/login.feature', 'Check title')
+def test_title():
+    pass
+    
+
+@scenario('../features/login.feature', 'Check heading')
+def test_heading():
+    pass
