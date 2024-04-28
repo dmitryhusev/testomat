@@ -1,17 +1,9 @@
-name: Testomatio Tests
-
+name: Playwright Tests
 on:
-  workflow_dispatch:
-    inputs:
-      grep:
-        description: 'tests to grep '
-        required: false
-        default: ''
-      run:
-        required: false
-      testomatio:
-        required: false
-
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 jobs:
   test:
     timeout-minutes: 60
@@ -30,15 +22,10 @@ jobs:
         . ./venv/bin/activate
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    # - name: Ensure browsers are installed
-      # run: . ./venv/bin/activate && python -m playwright install --with-deps
     - name: Run your tests
       run: |
         . ./venv/bin/activate
-        xvfb-run pytest --headed --grep "${{ github.event.inputs.grep }}"
-      env:
-        TESTOMATIO: "${{ github.event.inputs.testomatio }}"
-        TESTOMATIO_RUN: "${{ github.event.inputs.run }}"
+        xvfb-run pytest --headed
     - uses: actions/upload-artifact@v4
       if: always()
       with:
