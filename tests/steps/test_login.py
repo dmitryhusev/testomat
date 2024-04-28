@@ -25,7 +25,7 @@ def heading_is(browser):
 
 @then('Email field is displayed')
 def title_is(browser):
-    expect(browser.get_by_placeholder('name@email.com').first).to_have_id('user_email')
+    expect(browser.get_by_placeholder('name1@email.com').first).to_have_id('user_email')
 
     
 #####
@@ -34,7 +34,7 @@ def title_is(browser):
 def test_home_page_title():
     pass
 
-@scenario('../features/login.feature', 'Check home page heading')
+@scenario('../features/login.feature', 'Check home page heading text')
 def test_home_page_heading():
     pass
 

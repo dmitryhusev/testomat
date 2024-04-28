@@ -5,7 +5,7 @@ Feature: Login
         When User on page
         Then Page title is
 
-    Scenario: Check home page heading
+    Scenario: Check home page heading text
         Given Navigate to login page
         When User on page
         Then Heading is
