@@ -1,11 +1,11 @@
 Feature: Login
 
-    Scenario: Check title
+    Scenario: Check home page title
         Given Navigate to login page
         When User on page
         Then Page title is
 
-    Scenario: Check heading
+    Scenario: Check home page heading
         Given Navigate to login page
         When User on page
         Then Heading is
