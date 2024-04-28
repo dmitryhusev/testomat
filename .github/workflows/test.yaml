@@ -1,9 +1,17 @@
-name: Playwright Tests
+name: Testomatio Tests
+
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
+    inputs:
+      grep:
+        description: 'tests to grep '
+        required: false
+        default: ''
+      run:
+        required: false
+      testomatio:
+        required: false
+
 jobs:
   test:
     timeout-minutes: 60
