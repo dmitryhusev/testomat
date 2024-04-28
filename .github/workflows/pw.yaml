@@ -31,4 +31,4 @@ jobs:
       with:
         name: artifacts
         path: |
-          test-results/
+          output/
