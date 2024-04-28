@@ -35,7 +35,10 @@ jobs:
     - name: Run your tests
       run: |
         . ./venv/bin/activate
-        xvfb-run pytest --headed
+        xvfb-run pytest --headed --grep "${{ github.event.inputs.grep }}"
+      env:
+        TESTOMATIO: "${{ github.event.inputs.testomatio }}"
+        TESTOMATIO_RUN: "${{ github.event.inputs.run }}"
     - uses: actions/upload-artifact@v4
       if: always()
       with:
